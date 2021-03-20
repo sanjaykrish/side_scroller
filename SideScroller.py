@@ -46,7 +46,7 @@ while True:
     screen.blit(background, (0, 0))
     screen.blit(background, (x2, 0))
     for obs in obs:
-        obs[0] -= speed
+        obs[0][0] -= speed
         screen.blit(cacti, (obs[1], obs[2]))
         if collide_rect(obs[1], obs[2], obs[0].get_width(), obs[0].get_height(), boy_x, boy_y, boy_size_x, boy_size_y):
             speed = 0
