@@ -15,6 +15,7 @@ cacti = pygame.transform.scale(cacti, (int(cacti.get_width()/8), int(cacti.get_h
 obs_x = 200
 obs_y = 100
 obs = [cacti, obs_x, obs_y]
+obs_list = [obs]
 background = pygame.image.load('images/PurpledParralax.jpg')
 screen = pygame.display.set_mode((800, background.get_height()))
 screen.blit(background, (0, 0))
@@ -32,11 +33,12 @@ def collide_rect(x1, y1, w1, h1, x2, y2, w2, h2):
     else:
         return False
 
-while True:
+Running = True
+while Running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit
-            sys.exit
+            Running = False
+#            sys.exit
     x -= speed
     x2 -= speed
     if x < background.get_width():
@@ -45,10 +47,10 @@ while True:
         x2 = background.get_width()
     screen.blit(background, (0, 0))
     screen.blit(background, (x2, 0))
-    for obs in obs:
-        obs[0] -= speed
-        screen.blit(cacti, (obs[1], obs[2]))
-        if collide_rect(obs[1], obs[2], obs[0].get_width(), obs[0].get_height(), boy_x, boy_y, boy_size_x, boy_size_y):
+    for obsi in obs_list:
+        obsi[1] -= speed
+        screen.blit(obsi[0], (obsi[1], obsi[2]))
+        if collide_rect(obsi[1], obsi[2], obsi[0].get_width(), obsi[0].get_height(), boy_x, boy_y, boy_size_x, boy_size_y):
             speed = 0
     screen.blit(boy_run[int(i/4)%run_frames], (boy_x, boy_y))
     i += 1
