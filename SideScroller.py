@@ -50,7 +50,7 @@ while Running:
     for obsi in obs_list:
         obsi[1] -= speed
         screen.blit(obsi[0], (obsi[1], obsi[2]))
-        if collide_rect(obsi[1], obsi[2], obsi[0].get_width(), obsi[0].get_height(), boy_x, boy_y, boy_size_x, boy_size_y):
+        if collide_rect(obsi[1], obsi[2], cacti.get_width(), cacti.get_height(), boy_x, boy_y, boy_size_x, boy_size_y):
             speed = 0
     screen.blit(boy_run[int(i/4)%run_frames], (boy_x, boy_y))
     i += 1
